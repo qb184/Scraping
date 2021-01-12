@@ -112,9 +112,9 @@ def main():
 
     get_all_info(r, con, baseUrl)
     con.close()
+
+
 ###################
-
-
 if __name__ == '__main__':
     main()
 
