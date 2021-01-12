@@ -2,9 +2,12 @@ from requests_html import HTMLSession
 import json
 import sqlite3
 from sqlite3 import Error
-
+# import schedule
+import time
 
 # function to get values with a specific id from json
+
+
 def get_img_ids(id, json_rep):
     result = []
 
@@ -98,13 +101,8 @@ def main():
     drop_images_table = '''DROP TABLE image_urls'''
 
     con = create_connection(database)
-    # cursor = con.cursor()
-    # cursor.execute('''DROP TABLE girls_top''')
-    # cursor.execute('''DROP TABLE image_urls''')
 
     if con is not None:
-        # create_table(con, create_girls_top_table)
-        # create_table(con, create_images_table)
         modify_table(con, drop_girls_top_table)
         modify_table(con, drop_images_table)
         modify_table(con, create_girls_top_table)
@@ -119,3 +117,11 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+    # schedule.every(5).minutes.do(main)
+    # while True:
+    #     schedule.run_pending()
+
+    # while True:
+    #     main()
+    #     time.sleep(5*60)
